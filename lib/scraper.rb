@@ -14,16 +14,12 @@ class Scraper
             distillery =  row.css('td:nth-child(1)').text.strip
             location =  row.css('td:nth-child(2)').text.strip
             region =  row.css('td:nth-child(3)').text.strip
-            ScotchList.new(distillery, location, region)
-            
-            
-
-            
+            ScotchList.new(distillery, location, region)            
         end
     end
 
     def self.scrape_scotch_region(row)
-        html = open(SITE_URL+row.region)
+        html = open(SITE_URL+row.location)
         doc =  Nokogiri::HTML(html)
         binding.pry
     end

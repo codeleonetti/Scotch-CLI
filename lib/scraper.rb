@@ -10,33 +10,24 @@ class Scraper
         doc.css(".sortable.wikitable").css("tr").each do |row|
             distillery =  row.css('td:nth-child(1)').text.strip
             location =  row.css('td:nth-child(2)').text.strip
-            region =  row.css('td:nth-child(3)').text.strip
-            # binding.pry
-            # info = 
-            ScotchList.new(distillery, location, region)            
+            region =  row.css('td:nth-child(3)').text.strip 
+            if row.css('td:nth-child(1)').css("a").attr("href") != nil
+                url =  row.css('td:nth-child(1)').css("a").attr("href").value.strip
+            else 
+                url = nil
+            end
+            ScotchList.new(distillery, location, region, url)             
         end
     end
 
-    # def self.scrape_scotch_region(location)
-    #     html = open(SITE_URL+row.location)
-    #     doc =  Nokogiri::HTML(html)
-    #     #binding.pry
-    # end
+    def self.info_scrape(actual_input)
+        html = open(SITE_URL + actual_input.url)
+        doc = Nokogiri::HTML(html)
+        actual_input.info = doc.css("p")[4].text.strip
+        #binding.pry
+    end
+   
 end
 
-        # whisky_table.each do |whisky|
-        #     binding.pry
-        #     distillery
-       
-        #     whisky
-        #whisky_table = doc.css(".sortable.wikitable").css("td")
-
-        # distillery = scotch.css("a").attr("href").value
-            # location = scotch.css("")
-            # region =  scotch.css("a").attr("href").value
-            #scotch.text.gsub(/\n/, " ").strip
-    #doc.css(".sortable.wikitable").css("tr").text
-   # scotch.text.gsub(/\n/, " ") this removes extras
-    #scotch.css("a").attr("href").value
-    #scotch.css("a").attr("title").value
+      
        

@@ -1,7 +1,7 @@
 require "pry"
 class ScotchList
 
-    attr_accessor :distillery, :location, :region
+    attr_accessor :distillery, :location, :region, :url, :info
    
     @@all = []
     @@speyside = []
@@ -11,10 +11,11 @@ class ScotchList
     @@island = []
     @@campbeltown = []
 
-    def initialize(distillery, location, region)
+    def initialize(distillery, location, region, url = nil)
         @distillery = distillery
         @location = location
         @region = region
+        @url = url
         regions
         @@all << self
     end

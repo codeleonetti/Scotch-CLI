@@ -20,13 +20,19 @@ class Scraper
         end
     end
 
-    def self.info_scrape(actual_input)
-        html = open(SITE_URL + actual_input.url)
-        doc = Nokogiri::HTML(html)
-        actual_input.info = doc.css("p")[4].text.strip
+    def self.info_scrape(actual_input) # method scrapes the url that was pulled
         #binding.pry
-    end
-   
+        if actual_input.url != nil && !actual_input.url.include?("redlink") # had to account for certainlinks not available so needed to account for it.
+            html = open(SITE_URL + actual_input.url)        # if there is data to give user send info   
+            doc = Nokogiri::HTML(html)
+            actual_input.info = doc.css("p")[4].text.strip
+        end
+        if actual_input.info == nil                             # if there is no data to give user send the statement below 
+            actual_input.info = "Sorry no available information about this distillery."
+        else
+            actual_input.info
+        end
+    end 
 end
 
       

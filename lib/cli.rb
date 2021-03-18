@@ -39,11 +39,11 @@ class AllAboutScotch
         
     end
 
-    def list_spey(input)#um yeah this code this method iterates over each region and selects the distilleries of that region
+    def list_spey(input)# this method iterates over each region and selects the distilleries of that region
          if input.to_i == 1 
             puts "Welcome to Speyside Region"
-            ScotchList.speyside.each.with_index(1) do |list, i|
-            puts"#{i}. #{list.distillery}"
+            ScotchList.speyside.each.with_index(1) do |list, i|     #each one of the if and elsif statements controls the info that is sent to the user allowing
+            puts"#{i}. #{list.distillery}"                          #them to see info about scotches
             end
             puts "Please select a distillery to see more information:"
             distillery_input = gets.chomp
@@ -106,7 +106,8 @@ class AllAboutScotch
             puts "Located in #{actual_input.location}, Scotland."
             Scraper.info_scrape(actual_input)
             puts "#{actual_input.info}"
-        end  
+        end 
+        puts 
     end
     
     def another_selection
@@ -115,21 +116,18 @@ class AllAboutScotch
             puts
             puts "1. yes"
             puts "2. no"
+            puts
             yes_or_no = gets.chomp
-            if yes_or_no.to_i == 1 || yes_or_no == "yes" 
+        if yes_or_no.to_i == 1 || yes_or_no == "yes" 
                 region_menu 
-            elsif yes_or_no.to_i == 2 || yes_or_no == "no"
+        elsif yes_or_no.to_i == 2 || yes_or_no == "no"
             puts     
             puts "Thank You for looking through All about scotch!"
             puts "if you would like more info on each distillery please look at."   
             puts "https://en.wikipedia.org/wiki/List_of_whisky_distilleries_in_Scotland" 
                 exit
         end
-    end
+        puts
+    end   
 end
 
-#list_spey.ScotchList(location)
-#Scraper.scrape_scotch_region(location)
- # if !input.to_i.between?(1, distillery.count) 
-        #     ScotchList.speyside.each {|list| puts"#{list.location}"}
-        #     binding.pry

@@ -15,12 +15,12 @@ class ScotchList
         @distillery = distillery
         @location = location
         @region = region
-        @@all << self
         regions
+        @@all << self
     end
 
     def regions 
-        if @region == "Lowland"
+        if @region == "Lowland" 
             @@lowland << self
         elsif @region == "Speyside"
             @@speyside << self
@@ -32,7 +32,7 @@ class ScotchList
             @@island << self
         elsif @region == "Campbeltown"
             @@campbeltown << self
-                        
+            #binding.pry            
         end
                 
     end

@@ -1,7 +1,4 @@
-    require "open-uri"
-    require "nokogiri"
-    require "pry"
-    require_relative "../lib/scotchlist.rb"
+   
 class Scraper
 
     SITE_URL = "http://en.wikipedia.org"
@@ -14,17 +11,19 @@ class Scraper
             distillery =  row.css('td:nth-child(1)').text.strip
             location =  row.css('td:nth-child(2)').text.strip
             region =  row.css('td:nth-child(3)').text.strip
+            # binding.pry
+            # info = 
             ScotchList.new(distillery, location, region)            
         end
     end
 
-    def self.scrape_scotch_region(row)
-        html = open(SITE_URL+row.location)
-        doc =  Nokogiri::HTML(html)
-        binding.pry
-    end
+    # def self.scrape_scotch_region(location)
+    #     html = open(SITE_URL+row.location)
+    #     doc =  Nokogiri::HTML(html)
+    #     #binding.pry
+    # end
 end
-Scraper.scrape_scotch
+
         # whisky_table.each do |whisky|
         #     binding.pry
         #     distillery

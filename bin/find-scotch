@@ -9,5 +9,5 @@ require_relative "../lib/cli"
 require_relative "../lib/scotchlist"
 
 
-#Scraper.scrape_scotch
+
 AllAboutScotch.new.greeting

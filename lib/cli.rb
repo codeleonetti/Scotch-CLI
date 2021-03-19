@@ -4,7 +4,7 @@ class AllAboutScotch
     def greeting # user greeting/ links my scotch scraper
         puts "Welcome to all about Scotch!"
         Scraper.scrape_scotch
-        region_menu 
+        menu
         
     end
 
@@ -23,30 +23,59 @@ class AllAboutScotch
            
     end
 
-    def region_menu
+    # def get_input
+    #     input = gets.chomp
+    #     if !input.to_i.between?(1,6) 
+    #         puts "Please enter a valid number"
+    #     else
+    #     end
+    #   input
+    # end
+
+    # def main
+    #     done = false
+    #     until done do 
+    #         list_regions
+    #         input = get_input
+    #         if valid(input,1,6)
+    #             list_distilleries(input)        # need to add the choose_another   # code that is being worked on to refactor this mess
+    #     else 
+    #         done = true 
+    #     end
+    #     end
+    # end
+
+    # def valid(input,low,high)
+    #     if !input.to_i.between?(low,high)
+    #         false
+    #     else
+    #         true
+    #     end
+    # end
+
+    def menu
         list_regions
-        #puts "Please enter a valid number"
         input = gets.chomp
         if !input.to_i.between?(1,6)  
-            puts "Please enter a valid number"  
-            another_selection
+            puts "Please enter a valid number"
             list_regions
-            region_menu
+            another_selection
+            menu
         else   
-            list_spey(input)
+            list_distilleries(input)
             another_selection
         end
         
     end
 
-    def list_spey(input)# this method iterates over each region and selects the distilleries of that region
+    def list_distilleries(input)# this method iterates over each region and selects the distilleries of that region
          if input.to_i == 1 
             puts "Welcome to Speyside Region"
             ScotchList.speyside.each.with_index(1) do |list, i|     #each one of the if and elsif statements controls the info that is sent to the user allowing
             puts"#{i}. #{list.distillery}"                          #them to see info about scotches
             end
             puts "Please select a distillery to see more information:"
-            distillery_input = gets.chomp
+            distillery_input = gets.chomp                                           # make sure inputs are valid(in range)
             actual_input = ScotchList.speyside[distillery_input.to_i-1]
             puts "Located in #{actual_input.location}, Scotland."
             Scraper.info_scrape(actual_input)
@@ -56,7 +85,7 @@ class AllAboutScotch
             ScotchList.highland.each.with_index(1) do |list, i|
             puts"#{i}. #{list.distillery}"
             end  
-            puts "Please select a distillery to see more information:"
+            puts "Please select a distillery to see more information:"                  # need to fix with valid method 
             distillery_input = gets.chomp
             actual_input = ScotchList.highland[distillery_input.to_i-1]
             puts "Located in #{actual_input.location}, Scotland."
@@ -110,7 +139,7 @@ class AllAboutScotch
         puts 
     end
     
-    def another_selection
+    def another_selection # need to adjust 
             puts
             puts "Would you like to choose another distillery?"
             puts
@@ -119,7 +148,7 @@ class AllAboutScotch
             puts
             yes_or_no = gets.chomp
         if yes_or_no.to_i == 1 || yes_or_no == "yes" 
-                region_menu 
+                menu 
         elsif yes_or_no.to_i == 2 || yes_or_no == "no"
             puts     
             puts "Thank You for looking through All about scotch!"

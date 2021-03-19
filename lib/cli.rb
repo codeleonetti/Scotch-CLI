@@ -4,7 +4,7 @@ class AllAboutScotch
     def greeting # user greeting/ links my scotch scraper
         puts "Welcome to all about Scotch!"
         Scraper.scrape_scotch
-        menu
+        main
         
     end
 
@@ -23,50 +23,53 @@ class AllAboutScotch
            
     end
 
-    # def get_input
-    #     input = gets.chomp
-    #     if !input.to_i.between?(1,6) 
-    #         puts "Please enter a valid number"
-    #     else
-    #     end
-    #   input
-    # end
-
-    # def main
-    #     done = false
-    #     until done do 
-    #         list_regions
-    #         input = get_input
-    #         if valid(input,1,6)
-    #             list_distilleries(input)        # need to add the choose_another   # code that is being worked on to refactor this mess
-    #     else 
-    #         done = true 
-    #     end
-    #     end
-    # end
-
-    # def valid(input,low,high)
-    #     if !input.to_i.between?(low,high)
-    #         false
-    #     else
-    #         true
-    #     end
-    # end
-
-    def menu
-        list_regions
+    def get_input
         input = gets.chomp
-        if !input.to_i.between?(1,6)  
+        if !input.to_i.between?(1,6) 
             puts "Please enter a valid number"
-            list_regions
-            another_selection
-            menu
-        else   
-            list_distilleries(input)
-            another_selection
+        else
         end
-        
+      input
     end
+
+    def main
+        done = false
+        while done == false do
+            list_regions
+            input = get_input
+            if valid?(input,1,6)
+             list_distilleries(input) 
+             another_selection                     # need to add the choose_another   # code that is being worked on to refactor  
+             done = true
+            else
+             main 
+            end
+        end
+        done
+    end
+
+    def valid?(input,low,high)
+        if !input.to_i.between?(low,high)
+            false
+        else
+            true
+        end
+    end
+
+    # def menu
+    #     list_regions
+    #     input = gets.chomp
+    #     if !input.to_i.between?(1,6)  
+    #         puts "Please enter a valid number"
+    #         list_regions
+    #         another_selection
+    #         menu
+    #     else   
+    #         list_distilleries(input)
+    #         another_selection
+    #     end
+        
+    # end
 
     def list_distilleries(input)# this method iterates over each region and selects the distilleries of that region
          if input.to_i == 1 
@@ -146,15 +149,18 @@ class AllAboutScotch
             puts "1. yes"
             puts "2. no"
             puts
-            yes_or_no = gets.chomp
-        if yes_or_no.to_i == 1 || yes_or_no == "yes" 
-                menu 
-        elsif yes_or_no.to_i == 2 || yes_or_no == "no"
+            input = get_input
+            valid?(input,1,2)
+            #binding.pry
+        if  input.to_i == 1 || input == "yes"
+                main 
+        elsif input.to_i == 2 || input == "no"
+            
             puts     
             puts "Thank You for looking through All about scotch!"
             puts "if you would like more info on each distillery please look at."   
             puts "https://en.wikipedia.org/wiki/List_of_whisky_distilleries_in_Scotland" 
-                exit
+            exit
         end
         puts
     end   

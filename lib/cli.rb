@@ -2,13 +2,13 @@ require "pry"
 class AllAboutScotch
     def title
         puts
-        puts "       sssss        cccc       oooo    tttttttttttt    cccc     hhh    hhh      "
-        puts "    ssss   sss    ccc   ccc  ooo  ooo      ttt       ccc   ccc  hhh    hhh     "
-        puts "     ssss         ccc        ooo  ooo      ttt       ccc        hhh    hhh    "
-        puts "      sssss       ccc        ooo  ooo      ttt       ccc        hhhhhhhhhh     "
-        puts "          sssss   ccc        ooo  ooo      ttt       ccc        hhh    hhh    "
-        puts "     sss    ssss  ccc   ccc  ooo  ooo      ttt       ccc   ccc  hhh    hhh     "
-        puts "       sssss        cccc       oooo        ttt         cccc     hhh    hhh      "
+        puts "       sssss        cccc       oooo    ttttttttttt    cccc     hhh    hhh      "
+        puts "    ssss   sss    ccc   ccc  ooo  ooo      ttt      ccc   ccc  hhh    hhh     "
+        puts "     ssss         ccc        ooo  ooo      ttt      ccc        hhh    hhh    "
+        puts "      sssss       ccc        ooo  ooo      ttt      ccc        hhhhhhhhhh     "
+        puts "          sssss   ccc        ooo  ooo      ttt      ccc        hhh    hhh    "
+        puts "     sss    ssss  ccc   ccc  ooo  ooo      ttt      ccc   ccc  hhh    hhh     "
+        puts "       sssss        cccc       oooo        ttt        cccc     hhh    hhh      "
         puts  
     end
 
@@ -88,8 +88,8 @@ class AllAboutScotch
     def list_distilleries(input)# this method iterates over each region and selects the distilleries of that region
          if input.to_i == 1 
             puts "Welcome to Speyside Region"
+            puts
             ScotchList.speyside.each.with_index(1) do |list, i|     #each one of the if and elsif statements controls the info that is sent to the user allowing
-                puts
                 puts"#{i}. #{list.distillery}"                          #them to see info about scotches
             end
             puts
@@ -103,8 +103,8 @@ class AllAboutScotch
             puts "#{actual_input.info}"
         elsif input.to_i == 2
             puts "Welcome to Highland Region"
+            puts
             ScotchList.highland.each.with_index(1) do |list, i|
-                puts
                 puts"#{i}. #{list.distillery}"
             end
             puts 
@@ -115,9 +115,9 @@ class AllAboutScotch
             Scraper.info_scrape(actual_input)
             puts "#{actual_input.info}"
         elsif input.to_i == 3
-            puts "Welcome to Island Region" 
+            puts "Welcome to Island Region"
+            puts
             ScotchList.island.each.with_index(1) do |list, i|
-                puts
                 puts"#{i}. #{list.distillery}"
             end
             puts
@@ -129,8 +129,8 @@ class AllAboutScotch
             puts "#{actual_input.info}"
         elsif input.to_i == 4
             puts "Welcome to Lowland Region"
+            puts
             ScotchList.lowland.each.with_index(1) do |list, i|
-                puts
                 puts"#{i}. #{list.distillery}" 
             end
             puts
@@ -142,8 +142,8 @@ class AllAboutScotch
             puts "#{actual_input.info}"
         elsif input.to_i == 5
             puts "Welcome to Islay Region"
+            puts
             ScotchList.islay.each.with_index(1) do |list, i|
-                puts
                 puts"#{i}. #{list.distillery}"
             end
             puts
@@ -155,8 +155,8 @@ class AllAboutScotch
             puts "#{actual_input.info}"
         elsif input.to_i == 6
             puts "Welcome to Campbeltown Region"
+            puts
             ScotchList.campbeltown.each.with_index(1) do |list, i|
-                puts
                 puts"#{i}. #{list.distillery}"
             end
             puts "Please select a distillery to see more information:"

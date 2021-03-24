@@ -79,7 +79,7 @@ If you would like to install this program.
 3. Once you are in your desired folder clone the link by typing: git clone ( attach ssh_link here minus the parenthasis) dont forget to hit enter:).
 4. (cd) back into your folder that you cloned the link if you are not in already. If you are (cd) into the file ./bin/find_scotch.
 5. IMPORTANT make sure you run bundle install in the program first to make sure you hace the right gems to run this program.
-6. Final step ENJOY browsing over a 100 scotches in the 6 regions of Scotland preferably with a scotch of your choice in your hand. CHEERS
+6. Final step ENJOY browsing over a 100 scotches in the 6 regions of Scotland preferably with a scotch of your choice in your hand. CHEERS !
 
 
 

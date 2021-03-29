@@ -70,20 +70,15 @@ class AllAboutScotch
         end
     end
 
-    # def menu
-    #     list_regions
-    #     input = gets.chomp
-    #     if !input.to_i.between?(1,6)  
-    #         puts "Please enter a valid number"
-    #         list_regions
-    #         another_selection
-    #         menu
-    #     else   
-    #         list_distilleries(input)
-    #         another_selection
-    #     end
-        
-    # end
+    def valid_input(input, distillery_input, region)
+
+        locations = ScotchList.find {|scotch| scotch.region == region}
+        if !distillery_input.to_i.between?(1, locations.length) 
+            puts "Please enter a valid number"
+            list_distilleries(input) 
+        end     
+    end
+
 
     def list_distilleries(input)# this method iterates over each region and selects the distilleries of that region
          if input.to_i == 1 
@@ -94,14 +89,20 @@ class AllAboutScotch
             end
             puts
             puts "Please select a distillery to see more information:"
-            distillery_input = gets.chomp                                           # make sure inputs are valid(in range)
+            distillery_input = gets.chomp 
+        #  if !distillery_input.to_i.between?(1, ScotchList.speyside.length) 
+        #     puts "Please enter a valid number"
+            # list_distilleries(input)
+            valid_input(input, distillery_input,"speyside")                            # make sure inputs are valid(in range)
+         else
             actual_input = ScotchList.speyside[distillery_input.to_i-1]
             puts
-            puts "Located in #{actual_input.location}, Scotland."
+            puts "Located in #{actual_input.location}, Scotland."      
             Scraper.info_scrape(actual_input)
             puts
             puts "#{actual_input.info}"
-        elsif input.to_i == 2
+         end
+        if input.to_i == 2
             puts "Welcome to Highland Region"
             puts
             ScotchList.highland.each.with_index(1) do |list, i|
@@ -193,3 +194,17 @@ class AllAboutScotch
     end   
 end
 
+  # puts "Please enter a valid number"
+            # list_distilleries(input)                                         # make sure inputs are valid(in range)
+            # actual_input = ScotchList.speyside[distillery_input.to_i-1]
+            # puts
+            # puts "Located in #{actual_input.location}, Scotland."
+            # Scraper.info_scrape(actual_input)
+            # puts
+            # puts "#{actual_input.info}"
+        #  else 
+        #     puts "Please enter a valid number"
+        #     list_distilleries(input)
+         
+        #  puts "Please enter a valid number"
+        #     list_distilleries(input)                   

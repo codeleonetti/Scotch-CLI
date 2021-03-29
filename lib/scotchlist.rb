@@ -70,3 +70,8 @@ class ScotchList
 
 end
 
+
+
+# regions_hash = {speyside}
+# make a hash that has all regions as the key 
+# each value will be the distilleries 
